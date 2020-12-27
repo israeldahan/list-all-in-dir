@@ -11,6 +11,7 @@ public class Main {
 
     public static void main (String[] args){
 
+
         Properties prop = new Properties();
         try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
 
@@ -18,9 +19,16 @@ public class Main {
                 System.out.println("Sorry, unable to find config.properties");
                 return;
             }
-
             //load a properties file from class path, inside static method
             prop.load(input);
+
+            for (String propertyName : prop.stringPropertyNames()) {
+                String systemPropertyValue = System.getProperty(propertyName);
+
+                if (systemPropertyValue != null) {
+                    prop.setProperty(propertyName, systemPropertyValue);
+                }
+            }
 
         } catch (IOException ex) {
             ex.printStackTrace();

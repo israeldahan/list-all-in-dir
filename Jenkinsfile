@@ -10,7 +10,7 @@ pipeline {
         stage ('clone project'){
             steps {
                 git branch: 'main', credentialsId: 'b5c6464c-b964-476b-ba36-d3ea0bdedd65', url: 'https://github.com/israeldahan/list-all-in-dir.git'
-                sh 'gradle run'
+                sh 'gradle build'
             }
         }
         stage('build'){

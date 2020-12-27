@@ -1,5 +1,4 @@
 pipeline {
-    def workspace = env.WORKSPACE
     agent { label 'aws'}
     parameters {
         string(name: 'USERNAME', defaultValue: 'ubuntu', description: 'insert user name')
@@ -34,8 +33,8 @@ pipeline {
             steps {
                 sh 'rm -rf ./run-jar'
                 sh 'mkdir ./run-jar'
-                sh 'cp ${workspace}/build/libs/*.jar ${workspace}/run-jar/getList.jar'
-                sh 'java  -DuserName="${params.USERNAME}"  -DhostName="${params.HOSTANME}"  -Dkey="${params.KEY}" -Ddirectory="${params.DIRECTORYNAME}" -jar ${workspace}/run-jar/getList.jar'
+                sh 'cp ${WORKSPACE}/build/libs/*.jar ${WORKSPACE}/run-jar/getList.jar'
+                sh 'java  -DuserName="${params.USERNAME}"  -DhostName="${params.HOSTANME}"  -Dkey="${params.KEY}" -Ddirectory="${params.DIRECTORYNAME}" -jar ${WORKSPACE}/run-jar/getList.jar'
             }
         }
 

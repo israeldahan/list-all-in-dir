@@ -34,6 +34,11 @@ public class Main {
                                                             prop.getProperty("directory")
         );
 
+        System.out.println(prop.getProperty("userName"));
+        System.out.println(prop.getProperty("hostName"));
+        System.out.println(prop.getProperty("port"));
+        System.out.println(prop.getProperty("key"));
+        System.out.println(prop.getProperty("directory"));
         new Connector( details ) ;
     }
 }

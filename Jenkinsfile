@@ -1,5 +1,5 @@
 pipeline {
-    agent 'aws'
+    agent { label 'aws'}
     parameters {
         string(name: 'USERNAME', defaultValue: 'ubuntu', description: 'insert user name')
         string(name: 'HOSTANME', defaultValue: '1.1.1.1', description: 'insert ip or hostname')

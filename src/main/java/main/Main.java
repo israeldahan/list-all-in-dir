@@ -28,7 +28,7 @@ public class Main {
 
         ConnectionDetails details  = new ConnectionDetails( prop.getProperty("userName"),
                                                             prop.getProperty("hostName"),
-                                                            Integer.parseInt(prop.getProperty("port")) ,
+                                                            Integer.parseInt(prop.getProperty("port", "22")) ,
                                                             prop.getProperty("password"),
                                                             prop.getProperty("key"),
                                                             prop.getProperty("directory")

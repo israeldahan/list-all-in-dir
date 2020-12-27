@@ -1,5 +1,8 @@
 node ('aws'){
-    sh 'ls -al'
-
-    System.out.println ' test jenkins'
+    stage ('clone project'){
+        sh 'ls -al'
+    }
+    stage('build'){
+        System.out.println ' test jenkins'
+    }
 }

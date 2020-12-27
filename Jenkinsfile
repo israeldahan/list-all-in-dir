@@ -5,6 +5,7 @@ pipeline {
         string(name: 'HOSTANME', defaultValue: '1.1.1.1', description: 'insert ip or hostname')
         string(name: 'DIRECTORYNAME', defaultValue: '/path/to/dir', description: 'insert path dir absolute')
         string(name: 'PASSWORD', defaultValue: '123456', description: 'insert password')
+        string(name: 'KEY', defaultValue: '/path', description: 'insert path to key')
     }
     stages {
         stage ('clone project'){
@@ -25,8 +26,17 @@ pipeline {
         }
         stage('build'){
             steps {
-                println ' test jenkins'
+                sh './gradlew build --no-daemon'
             }
         }
+        stage('run'){
+            steps {
+                sh 'rm -rf ./run-jar'
+                sh 'mkdir ./run-jar'
+                sh 'cp build/libs/*.jar ./run-jar/getList.jar'
+                sh 'java  -DuserName="${params.USERNAME}"  -DhostName="${params.HOSTANME}"  -Dkey="${params.KEY}" -Ddirectory="${params.DIRECTORYNAME}" -jar ./run-jar/getList.jar'
+            }
+        }
+
     }
 }

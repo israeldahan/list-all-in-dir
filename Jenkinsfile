@@ -33,8 +33,8 @@ pipeline {
             steps {
                 sh 'rm -rf ./run-jar'
                 sh 'mkdir ./run-jar'
-                sh 'cp ${WORKSPACE}/build/libs/*.jar ${WORKSPACE}/run-jar/getList.jar'
-                sh 'java  -DuserName="${params.USERNAME}"  -DhostName="${params.HOSTANME}"  -Dkey="${params.KEY}" -Ddirectory="${params.DIRECTORYNAME}" -jar ${WORKSPACE}/run-jar/getList.jar'
+                sh "cp ${WORKSPACE}/build/libs/*.jar ${WORKSPACE}/run-jar/getList.jar"
+                sh "java  -DuserName='${params.USERNAME}'  -DhostName='{params.HOSTANME}'  -Dkey='${params.KEY}' -Ddirectory='${params.DIRECTORYNAME}' -jar ${WORKSPACE}/run-jar/getList.jar"
             }
         }
 

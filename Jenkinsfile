@@ -15,7 +15,7 @@ pipeline {
         }
         stage('build'){
             steps {
-                System.out.println ' test jenkins'
+                println ' test jenkins'
             }
         }
     }

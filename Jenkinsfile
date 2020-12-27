@@ -13,6 +13,13 @@ pipeline {
                 sh 'gradle build'
             }
         }
+        stage('check java') {
+          sh "java -version"
+        }
+        stage('clean') {
+          sh "chmod +x gradlew"
+          sh "./gradlew clean --no-daemon"
+        }
         stage('build'){
             steps {
                 println ' test jenkins'

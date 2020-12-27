@@ -14,11 +14,15 @@ pipeline {
             }
         }
         stage('check java') {
-          sh "java -version"
+            steps {
+                sh "java -version"
+            }
         }
         stage('clean') {
-          sh "chmod +x gradlew"
-          sh "./gradlew clean --no-daemon"
+          steps {
+              sh "chmod +x gradlew"
+              sh "./gradlew clean --no-daemon"
+          }
         }
         stage('build'){
             steps {

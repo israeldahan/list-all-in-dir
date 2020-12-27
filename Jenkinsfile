@@ -10,7 +10,6 @@ pipeline {
         stage ('clone project'){
             steps {
                 checkout scm
-                sh 'gradle build'
             }
         }
         stage('check java') {
